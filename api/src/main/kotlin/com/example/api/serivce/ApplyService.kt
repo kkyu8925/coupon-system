@@ -1,15 +1,17 @@
 package com.example.api.serivce
 
 import com.example.api.domain.Coupon
+import com.example.api.repository.CouponCountRepository
 import com.example.api.repository.CouponRepository
 import org.springframework.stereotype.Service
 
 @Service
 class ApplyService(
-    protected val couponRepository: CouponRepository
+    private val couponRepository: CouponRepository,
+    private val couponCountRepository: CouponCountRepository
 ) {
     fun apply(userId: Long) {
-        val count = couponRepository.count()
+        val count = couponCountRepository.increment()
 
         if (count > 100) {
             return
