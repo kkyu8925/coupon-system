@@ -34,6 +34,9 @@ class ApplyServiceTes @Autowired constructor(
             executorService.submit {
                 try {
                     applyService.apply(userId)
+                } catch (ex: Exception) {
+                    println(ex.message)
+                    throw ex
                 } finally {
                     latch.countDown()
                 }
