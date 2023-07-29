@@ -59,7 +59,6 @@ class ApplyServiceTes @Autowired constructor(
         val latch = CountDownLatch(threadCount)
 
         for (i in 0..threadCount) {
-            val userId = i.toLong()
             executorService.submit {
                 try {
                     applyService.apply(1)
